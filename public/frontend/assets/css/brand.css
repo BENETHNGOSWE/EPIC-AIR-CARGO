@@ -133,53 +133,57 @@
    the bars glyph, right-aligned beside the logo, at least 46px on a side. Only below the nav's
    own 1023px breakpoint, so the desktop bar (where validnavs hides this button) is untouched. */
 
-/* Mobile header: logo hard left, menu button hard right - the epicseacargo.com arrangement.
+/* Mobile header: [ LOGO ] on the left, [ NAVBAR BOX ] on the right. Nothing else.
 
-   My first attempt kept the theme's flex row and set justify-content:flex-start, min-width:0 and
-   flex:0 0 auto. Every one of those won in the cascade (verified) and the mark still sat in the
-   middle on a real phone, because the row's free space is also claimed by the toggle's auto
-   margin and by the collapse sibling - that geometry cannot be reproduced in this sandbox, so
-   rather than guess a third time the layout is now stated in terms no sibling can undo: block
-   container, left-floated logo, right-floated button. min-height stops the two floats from
-   collapsing the header to zero height; validnavs already clearfixes .navbar-header.
+   Two mistakes to avoid, both made here earlier: (a) the row's free space was being split by the
+   button's margin-left:auto inside the theme's flex container, so the logo drifted to the middle;
+   (b) a blanket `display:block !important` on the brand's images un-hid the second copy - the
+   theme ships .logo-display and .logo-scrolled and shows exactly one of them via
+   .navbar.bg-dark img.logo.logo-display { display: none }. So: no display rule is applied to the
+   images at all here, and both items are pinned to opposite corners of the header, which no
+   sibling's margins can shift.
 
-   Scoped to the theme's own 1023px nav breakpoint, so desktop never sees any of this. */
+   Everything is inside the theme's own 1023px nav breakpoint; desktop is untouched. */
 @media (max-width: 1023px) {
     nav.navbar.validnavs > .container {
         display: block !important;
-        padding-left: 14px;
-        padding-right: 14px;
     }
 
     nav.navbar.validnavs .navbar-header {
         display: block !important;
-        width: auto !important;
-        min-width: 0 !important;
-        min-height: 62px;
+        position: relative !important;
+        float: none !important;
+        width: 100% !important;
+        min-height: 64px;
         margin: 0 !important;
-        padding: 11px 0;
+        padding: 0 14px;
     }
 
     nav.navbar.validnavs .navbar-brand {
-        float: left !important;
-        display: block !important;
+        position: absolute !important;
+        top: 13px;
+        left: 14px;
+        right: auto !important;
+        float: none !important;
+        display: inline-block !important;
         width: auto !important;
         margin: 0 !important;
-        text-align: left !important;
     }
 
+    /* Only the size is set here. The theme decides which of the two images is visible; this file
+       must not touch display, or both show at once. */
     nav.navbar.validnavs .navbar-brand img {
-        float: none !important;
-        display: block !important;
         max-height: 40px;
-        width: auto !important;
-        max-width: 100%;
-        margin: 0 !important;
+        width: auto;
     }
 
     nav.navbar.validnavs .navbar-toggle {
-        float: right !important;
-        display: inline-flex !important;
+        position: absolute !important;
+        top: 9px;
+        right: 14px;
+        left: auto !important;
+        float: none !important;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
         min-width: 46px;
@@ -204,8 +208,6 @@
         outline: 0;
     }
 
-    /* The drawer itself: validnavs gives it position:fixed and width, the theme paints it
-       #343e59; brand navy here, full height, scrollable, with legible links. */
     nav.navbar.validnavs.mobile-sidenav .navbar-collapse.collapse.collapse-mobile {
         top: 0;
         height: 100vh;
