@@ -7,8 +7,11 @@
          .banner-area div                                  { height: 100%; }
      Only resources/views/frontend/pages/homepage.blade.php ever contains a .swiper-slide, so any
      other page using .banner-area rendered a tall empty navy block with the heading invisible
-     inside it. These classes are defined in public/frontend/assets/css/brand.css (loaded after
-     style.css) and carry their own colours, so no vendor rule reaches them. --}}
+     inside it. These classes live in public/frontend/assets/css/brand.css (loaded after
+     style.css) and carry their own colours, so no vendor rule reaches them.
+
+     The photo sits under a navy gradient in brand.css: background-color #0a2147 comes first, so
+     if the image is ever missing the panel still reads and the white type still holds contrast. --}}
 <div class="page-banner">
     <div class="container">
         <div class="row">

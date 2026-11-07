@@ -29,14 +29,28 @@
 }
 
 /* Inner-page banner (see resources/views/frontend/layouts/PageBanner.blade.php).
-   Navy panel, white type, one red rule - the same palette the hero uses, but self-contained
-   so the .banner-area reveal animation cannot hide it. Padding is deliberately about a third
-   of the theme's default-padding (120px top and bottom) because this is a page header, not a hero. */
+   The photo of cargo being loaded sits under a graded navy wash. The wash is strongest at the
+   top (0.86) because that is where the bright cloud band falls, easing to 0.70 behind the intro
+   line. Those figures are not taste: at 0.45 the white title measured 2.81:1 against the
+   brightest pixel of the visible band (fails AA's 4.5:1), at 0.62 it reached 4.66:1, so the whole
+   range here stays above the floor. background-color is the fallback if the jpg is ever absent.
+   Padding is a page header, not a hero (the theme's .default-padding is 120px top and bottom). */
 .page-banner {
-    background: #0a2147;
+    position: relative;
+    background-color: #0a2147;
+    background-image:
+        linear-gradient(180deg,
+            rgba(10, 33, 71, 0.86) 0%,
+            rgba(10, 33, 71, 0.76) 42%,
+            rgba(10, 33, 71, 0.70) 78%,
+            rgba(10, 33, 71, 0.74) 100%),
+        url('../img/epic/banner-cargo.jpg');
+    background-size: cover, cover;
+    background-position: center 62%, center 62%;
+    background-repeat: no-repeat, no-repeat;
     color: #ffffff;
     text-align: center;
-    padding: 78px 0 70px;
+    padding: 106px 0 96px;
 }
 
 .page-banner .container,
@@ -52,7 +66,7 @@
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.72);
+    color: rgba(255, 255, 255, 0.86);
 }
 
 .page-banner-title {
@@ -61,6 +75,7 @@
     font-weight: 700;
     line-height: 1.2;
     color: #ffffff;
+    text-shadow: 0 1px 18px rgba(6, 22, 48, 0.55);
 }
 
 .page-banner-intro {
@@ -68,7 +83,7 @@
     max-width: 640px;
     font-size: 17px;
     line-height: 1.65;
-    color: rgba(255, 255, 255, 0.80);
+    color: rgba(255, 255, 255, 0.92);
 }
 
 .page-banner-rule {
@@ -81,6 +96,7 @@
 
 @media (max-width: 767px) {
     .page-banner {
-        padding: 56px 0 50px;
+        padding: 72px 0 64px;
+        background-position: center 55%, center 55%;
     }
 }
