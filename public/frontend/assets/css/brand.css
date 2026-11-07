@@ -100,3 +100,95 @@
         background-position: center 55%, center 55%;
     }
 }
+
+/* --- Font Awesome: this site ships FA Free 5.15.4, the theme was authored against FA Pro 5.15.
+   Two consequences, both measured on this build rather than assumed:
+   1) validnavs.css asks for nav.navbar.validnavs .navbar-toggle i { font-weight: 300 }, which
+      beats .fa { font-weight: 900 } on specificity (0,1,3 vs 0,1,0). FA Free ships only 400 and
+      900, so 300 resolves to the 400 face, whose 151 glyphs do not contain U+F0C9 (bars). The
+      icon rendered as nothing, and the button has no background and no border, so the phone menu
+      looked like it had no menu button at all. Same for the close (times) icon inside the drawer.
+   2) :root --fontawesome is "Font Awesome 5 Pro", used by 10 rules in validnavs.css (nav carets,
+      search, swiper arrows) plus 5 literal rules in style.css. That family is not installed, so
+      every one of those glyphs is also empty.
+   The @font-face below aliases the missing family onto the shipped solid face and lets it answer
+   any weight the theme requests; the class rules pin the real FA classes to weight 900. */
+@font-face {
+    font-family: "Font Awesome 5 Pro";
+    src: url("../webfonts/fa-solid-900.woff2") format("woff2"),
+         url("../webfonts/fa-solid-900.ttf") format("truetype");
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+/* !important is deliberate: the vendor selector nav.navbar.validnavs .navbar-toggle i has
+   specificity (0,3,2), so a plain .fa rule cannot outvote it, as this build's own cascade
+   check showed before the !important was added. */
+.fa, .fas, .far, i[class^="fa-"], i[class*=" fa-"] {
+    font-family: "Font Awesome 5 Free" !important;
+    font-weight: 900 !important;
+}
+
+/* And make the phone menu button an obvious tap target, as on epicseacargo.com: red square with
+   the bars glyph, right-aligned beside the logo, at least 46px on a side. Only below the nav's
+   own 1023px breakpoint, so the desktop bar (where validnavs hides this button) is untouched. */
+@media (max-width: 1023px) {
+    nav.navbar.validnavs .navbar-header {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
+    nav.navbar.validnavs .navbar-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        order: 2;
+        min-width: 46px;
+        min-height: 46px;
+        padding: 0 13px;
+        margin: 0 0 0 auto;
+        background: #85080f;
+        border: none;
+        border-radius: 8px;
+        font-size: 19px;
+    }
+
+    nav.navbar.validnavs .navbar-toggle i {
+        color: #ffffff;
+        font-size: 19px;
+        line-height: 1;
+    }
+
+    nav.navbar.validnavs .navbar-toggle:focus,
+    nav.navbar.validnavs .navbar-toggle:active {
+        background: #0a2147;
+        outline: 0;
+    }
+
+    /* The drawer itself: validnavs gives it position:fixed and width, the theme paints it
+       #343e59; brand navy here, full height, scrollable, and legible links. */
+    nav.navbar.validnavs.mobile-sidenav .navbar-collapse.collapse.collapse-mobile {
+        top: 0;
+        height: 100vh;
+        max-height: 100vh;
+        overflow-y: auto;
+        padding: 26px 26px 40px;
+        background: #0a2147;
+        width: 300px;
+    }
+
+    nav.navbar.validnavs.mobile-sidenav .navbar-collapse.collapse.collapse-mobile ul.nav > li > a {
+        color: #ffffff;
+        font-weight: 600;
+        padding: 13px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    nav.navbar.validnavs.mobile-sidenav .navbar-collapse.collapse.collapse-mobile ul.nav > li > a:hover {
+        color: #ffffff;
+        background: #85080f;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
