@@ -44,7 +44,7 @@
                     <div class="col-lg-4 col-md-6 footer-item pr-30 pr-md-15 pr-xs-15">
                         <div class="f-item about">
                             <div class="footer-logo">
-                                <img src="{{ asset('frontend/assets/img/logo-epic-white.png') }}" alt="Epic Air Cargo" width="180" height="48">
+                                <img src="{{ asset('frontend/assets/img/logo-epic-white.png').'?v=20261108a' }}" alt="Epic Air Cargo" width="180" height="48">
                             </div>
                             <div class="f-item">
                                 <p>Air freight forwarding and customs clearing from Dar es Salaam. Send the paperwork early and the shipment does not wait for it.</p>

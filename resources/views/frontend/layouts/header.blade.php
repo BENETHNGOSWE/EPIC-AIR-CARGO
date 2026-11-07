@@ -49,8 +49,8 @@
                         <i class="fa fa-bars"></i>
                     </button>
                     <a class="navbar-brand" href="/">
-                        <img src="{{ asset('frontend/assets/img/logo-epic.png') }}" class="logo logo-display" alt="Epic Air Cargo">
-                        <img src="{{ asset('frontend/assets/img/logo-epic.png') }}" class="logo logo-scrolled" alt="Epic Air Cargo">
+                        <img src="{{ asset('frontend/assets/img/logo-epic.png').'?v=20261108a' }}" class="logo logo-display" alt="Epic Air Cargo">
+                        <img src="{{ asset('frontend/assets/img/logo-epic.png').'?v=20261108a' }}" class="logo logo-scrolled" alt="Epic Air Cargo">
                     </a>
                 </div>
                 <!-- End Header Navigation -->
@@ -58,7 +58,7 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="navbar-menu">
 
-                    <img src="{{ asset('frontend/assets/img/logo-epic.png') }}" alt="Epic Air Cargo">
+                    <img src="{{ asset('frontend/assets/img/logo-epic.png').'?v=20261108a' }}" alt="Epic Air Cargo">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                         <i class="fa fa-times"></i>
                     </button>
