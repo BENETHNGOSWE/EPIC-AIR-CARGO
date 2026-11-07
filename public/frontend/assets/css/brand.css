@@ -133,63 +133,92 @@
    the bars glyph, right-aligned beside the logo, at least 46px on a side. Only below the nav's
    own 1023px breakpoint, so the desktop bar (where validnavs hides this button) is untouched. */
 
-/* Mobile header: [ LOGO ] on the left, [ NAVBAR BOX ] on the right. Nothing else.
+/* Mobile header: [ LOGO ] then [ NAV BOX ] on one line, inset from the screen edge.
 
-   Two mistakes to avoid, both made here earlier: (a) the row's free space was being split by the
-   button's margin-left:auto inside the theme's flex container, so the logo drifted to the middle;
-   (b) a blanket `display:block !important` on the brand's images un-hid the second copy - the
-   theme ships .logo-display and .logo-scrolled and shows exactly one of them via
-   .navbar.bg-dark img.logo.logo-display { display: none }. So: no display rule is applied to the
-   images at all here, and both items are pinned to opposite corners of the header, which no
-   sibling's margins can shift.
+   The centring was never a distribution problem: the theme positions the brand itself with
+       nav.validnavs .navbar-brand { position: absolute; left: 50%; transform: translate(-50%, -50%) }
+   Overriding only `left` (as the previous commit did) still left that translate in force, so the
+   mark was dragged left by half its own width - off the screen at the left edge - and up by half
+   its height, out of line with the button. `transform: none` is the declaration that actually
+   fixes it, and both boxes are also taken back to normal flow (position:static, left/right/top:
+   auto) so no other offset can apply. They are then laid out by a flex row in this file, with
+   align-items:center to share one line and margin-left:auto on the button to hold the right end.
 
-   Everything is inside the theme's own 1023px nav breakpoint; desktop is untouched. */
+   Only size is set on the images: the theme shows one of its two logo files and hides the other
+   via .navbar.bg-dark img.logo.logo-display { display: none }, and touching display there is what
+   put two logos on screen at once earlier. All of it sits inside the theme's own 1023px nav
+   breakpoint, so desktop is untouched. */
 @media (max-width: 1023px) {
     nav.navbar.validnavs > .container {
         display: block !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     nav.navbar.validnavs .navbar-header {
-        display: block !important;
-        position: relative !important;
-        float: none !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        flex-wrap: nowrap !important;
+        box-sizing: border-box !important;
         width: 100% !important;
-        min-height: 64px;
+        max-width: 100% !important;
+        min-height: 66px;
+        position: static !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        transform: none !important;
+        float: none !important;
         margin: 0 !important;
-        padding: 0 14px;
+        padding: 11px 16px !important;
+        gap: 12px;
     }
 
     nav.navbar.validnavs .navbar-brand {
-        position: absolute !important;
-        top: 13px;
-        left: 14px;
+        flex: 0 1 auto !important;
+        min-width: 0 !important;
+        max-width: calc(100% - 64px) !important;
+        order: 1;
+        position: static !important;
+        left: auto !important;
         right: auto !important;
+        top: auto !important;
+        transform: none !important;
         float: none !important;
-        display: inline-block !important;
-        width: auto !important;
+        display: inline-flex !important;
+        align-items: center !important;
         margin: 0 !important;
+        padding: 0 !important;
     }
 
-    /* Only the size is set here. The theme decides which of the two images is visible; this file
-       must not touch display, or both show at once. */
     nav.navbar.validnavs .navbar-brand img {
-        max-height: 40px;
-        width: auto;
+        max-height: 38px !important;
+        height: auto !important;
+        width: auto !important;
+        max-width: 100% !important;
+        margin: 0 !important;
     }
 
     nav.navbar.validnavs .navbar-toggle {
-        position: absolute !important;
-        top: 9px;
-        right: 14px;
+        order: 2;
+        flex: 0 0 auto !important;
+        margin-left: auto !important;
+        margin-top: 0 !important;
+        margin-right: 0 !important;
+        position: static !important;
         left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        transform: none !important;
         float: none !important;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
         min-width: 46px;
         min-height: 46px;
-        padding: 0 13px;
-        margin: 0 !important;
+        padding: 0 13px !important;
         background: #85080f;
         border: none;
         border-radius: 8px;
