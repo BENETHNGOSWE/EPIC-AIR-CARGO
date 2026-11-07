@@ -209,8 +209,9 @@
         width: auto !important;
         max-width: 100% !important;
         margin: 0 !important;
-        /* and none by the image */
-        margin-left: 0 !important;
+        /* and pulled 20px left so the word 'Express', not the swoosh tail, lines up with the
+           content below the fold; the tail is then clipped by the screen edge instead of by me */
+        margin-left: -20px !important;
     }
 
     nav.navbar.validnavs .navbar-toggle {
