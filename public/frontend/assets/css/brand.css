@@ -154,6 +154,9 @@
         max-width: 100% !important;
         margin: 0 !important;
         padding: 0 !important;
+        /* longhands too: bootstrap sets .container { padding-left: var(--bs-gutter-x,.75rem) }, i.e. 12px a side, so naming them keeps the 10px below provably the whole gap rather than relying on a shorthand beating a longhand */
+        padding-left: 0 !important;
+        padding-right: 0 !important;
     }
 
     nav.navbar.validnavs .navbar-header {
@@ -172,8 +175,11 @@
         transform: none !important;
         float: none !important;
         margin: 0 !important;
-        padding: 11px 16px 11px 13px !important;   /* top right bottom left: logo inset 13px, button stays 16px */
+        padding: 11px 16px 11px 10px !important;   /* top right bottom left: logo inset 13px, button stays 16px */
         gap: 12px;
+        /* the logo's 10px off the left edge; the button keeps 16px on the right */
+        padding-left: 10px !important;
+        padding-right: 16px !important;
     }
 
     nav.navbar.validnavs .navbar-brand {
@@ -191,6 +197,9 @@
         align-items: center !important;
         margin: 0 !important;
         padding: 0 !important;
+        /* no extra inset contributed by the link itself */
+        margin-left: 0 !important;
+        padding-left: 0 !important;
     }
 
     nav.navbar.validnavs .navbar-brand img {
@@ -199,6 +208,8 @@
         width: auto !important;
         max-width: 100% !important;
         margin: 0 !important;
+        /* and none by the image */
+        margin-left: 0 !important;
     }
 
     nav.navbar.validnavs .navbar-toggle {
