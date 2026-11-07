@@ -1,0 +1,29 @@
+/* Epic brand colours, from the supplied logo.
+   The Tranzi stylesheet carries its palette as custom properties on :root, so overriding
+   them here (loaded last) re-inks the whole theme without editing style.css.
+   Before -> after:  --color-primary #29378b (theme blue) -> #0a2147 (logo navy)
+                     --color-secondary #29378b             -> #85080f (logo red)
+                     --dark #e75b30 (theme orange)         -> #0a2147
+                     --color-heading #0e313a (dark teal)   -> #0a2147
+*/
+:root {
+    --color-primary: #0a2147;
+    --color-secondary: #85080f;
+    --color-heading: #0a2147;
+    --dark: #0a2147;
+    --dark-secondary: #061630;
+    --white-secondary: #d8e3f0;
+    --bg-gradient: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    --box-shadow-secondary: 0 10px 30px 0 rgba(10, 33, 71, 0.28);
+}
+
+/* Hero runs full-bleed behind the headline. The theme confines .banner-thumb to a
+   right-hand 55% window (style.css: .banner-area.banner-style-three .banner-thumb),
+   which suits a portrait-ish image; the supplied team photo is 3.27:1, so the crop
+   would have cut off the two people on each side. Loaded after style.css, so this
+   wins without touching the vendor stylesheet. */
+.banner-area.banner-style-three .banner-thumb {
+    width: 100%;
+    left: 0;
+    right: auto;
+}
