@@ -27,3 +27,60 @@
     left: 0;
     right: auto;
 }
+
+/* Inner-page banner (see resources/views/frontend/layouts/PageBanner.blade.php).
+   Navy panel, white type, one red rule - the same palette the hero uses, but self-contained
+   so the .banner-area reveal animation cannot hide it. Padding is deliberately about a third
+   of the theme's default-padding (120px top and bottom) because this is a page header, not a hero. */
+.page-banner {
+    background: #0a2147;
+    color: #ffffff;
+    text-align: center;
+    padding: 78px 0 70px;
+}
+
+.page-banner .container,
+.page-banner .row,
+.page-banner [class*="col-"] {
+    height: auto;
+    min-height: 0;
+}
+
+.page-banner-eyebrow {
+    margin: 0 0 12px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.page-banner-title {
+    margin: 0;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    line-height: 1.2;
+    color: #ffffff;
+}
+
+.page-banner-intro {
+    margin: 16px auto 0;
+    max-width: 640px;
+    font-size: 17px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.80);
+}
+
+.page-banner-rule {
+    display: block;
+    width: 56px;
+    height: 3px;
+    margin: 24px auto 0;
+    background: #85080f;
+}
+
+@media (max-width: 767px) {
+    .page-banner {
+        padding: 56px 0 50px;
+    }
+}
