@@ -7,8 +7,28 @@ cmds = [
     "cp /assets/worker-*.conf /etc/supervisor/conf.d/",
     "cp /assets/supervisord.conf /etc/supervisord.conf",
     "chmod +x /assets/start.sh",
-    "..."
+    "...",
+    "cp -n .env.example .env || true",
+    "php artisan key:generate --force --no-interaction || true",
+    "touch database/database.sqlite",
+    "mkdir -p storage/framework/views storage/framework/cache/data storage/framework/sessions storage/logs bootstrap/cache",
+    "chown -R www-data:www-data storage bootstrap/cache database || true",
+    "chmod -R ug+rwx storage bootstrap/cache database",
+    "php artisan config:clear",
+    "php artisan view:cache || true"
 ]
+
+# Why these commands are here (each one prevents a bare HTTP 500 "Server Error"):
+#  - key:generate into a .env that exists: without APP_KEY every request 500s with
+#    "No application encryption key has been specified." (EncryptCookies is on every web route).
+#  - chown/chmod: php-fpm runs as www-data below, while the build leaves storage/ owned by the
+#    build user. Laravel then dies writing compiled views and sessions, and dies again trying to
+#    log it - which is exactly the "Server Error" page with nothing in the logs.
+#  - config:clear, and NO config:cache: a cached config freezes whatever environment existed at
+#    build time, so values supplied by Coolify at runtime are ignored and a missing APP_KEY is
+#    baked in permanently. Route/view caches are safe; config is not.
+#  - database/database.sqlite: the app needs no database, but a deploy that runs migrations must
+#    not fail because the file is absent.
 
 [start]
 cmd = '/assets/start.sh'
