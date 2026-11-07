@@ -76,6 +76,8 @@
      <script src="{{ asset ('frontend/assets/js/SplitText.min.js')}}"></script>
      <script src="{{ asset('frontend/assets/js/YTPlayer.min.js')}}"></script>
     <script src="{{ asset ('frontend/assets/js/main.js')}}"></script>
+    {{-- must come after main.js: it only wires the menu if the theme's own plugin stayed silent --}}
+    <script src="{{ asset ('frontend/assets/js/nav-fallback.js')}}"></script>
  
  </body>
  </html>
