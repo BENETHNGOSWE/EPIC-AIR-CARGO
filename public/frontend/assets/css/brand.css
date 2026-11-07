@@ -132,22 +132,60 @@
 /* And make the phone menu button an obvious tap target, as on epicseacargo.com: red square with
    the bars glyph, right-aligned beside the logo, at least 46px on a side. Only below the nav's
    own 1023px breakpoint, so the desktop bar (where validnavs hides this button) is untouched. */
+
+/* Mobile header: logo hard left, menu button hard right - the epicseacargo.com arrangement.
+
+   My first attempt kept the theme's flex row and set justify-content:flex-start, min-width:0 and
+   flex:0 0 auto. Every one of those won in the cascade (verified) and the mark still sat in the
+   middle on a real phone, because the row's free space is also claimed by the toggle's auto
+   margin and by the collapse sibling - that geometry cannot be reproduced in this sandbox, so
+   rather than guess a third time the layout is now stated in terms no sibling can undo: block
+   container, left-floated logo, right-floated button. min-height stops the two floats from
+   collapsing the header to zero height; validnavs already clearfixes .navbar-header.
+
+   Scoped to the theme's own 1023px nav breakpoint, so desktop never sees any of this. */
 @media (max-width: 1023px) {
+    nav.navbar.validnavs > .container {
+        display: block !important;
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
     nav.navbar.validnavs .navbar-header {
-        display: flex;
-        align-items: center;
-        width: 100%;
+        display: block !important;
+        width: auto !important;
+        min-width: 0 !important;
+        min-height: 62px;
+        margin: 0 !important;
+        padding: 11px 0;
+    }
+
+    nav.navbar.validnavs .navbar-brand {
+        float: left !important;
+        display: block !important;
+        width: auto !important;
+        margin: 0 !important;
+        text-align: left !important;
+    }
+
+    nav.navbar.validnavs .navbar-brand img {
+        float: none !important;
+        display: block !important;
+        max-height: 40px;
+        width: auto !important;
+        max-width: 100%;
+        margin: 0 !important;
     }
 
     nav.navbar.validnavs .navbar-toggle {
-        display: inline-flex;
+        float: right !important;
+        display: inline-flex !important;
         align-items: center;
         justify-content: center;
-        order: 2;
         min-width: 46px;
         min-height: 46px;
         padding: 0 13px;
-        margin: 0 0 0 auto;
+        margin: 0 !important;
         background: #85080f;
         border: none;
         border-radius: 8px;
@@ -167,7 +205,7 @@
     }
 
     /* The drawer itself: validnavs gives it position:fixed and width, the theme paints it
-       #343e59; brand navy here, full height, scrollable, and legible links. */
+       #343e59; brand navy here, full height, scrollable, with legible links. */
     nav.navbar.validnavs.mobile-sidenav .navbar-collapse.collapse.collapse-mobile {
         top: 0;
         height: 100vh;
@@ -190,33 +228,5 @@
         background: #85080f;
         padding-left: 10px;
         padding-right: 10px;
-    }
-}
-
-/* Logo left on phones, as on epicseacargo.com (was centring, which read like a mistake).
-   Cause, measured rather than assumed: the brand link had no width of its own and the logo file
-   is 981x264, so as a flex item its automatic minimum size let it fill the row and the image -
-   display:block, max-width:100% - then stretched across it. min-width:0 plus flex:0 0 auto makes
-   the link exactly as wide as the mark, and max-height keeps the mark proportionate at 40px
-   (about 149px wide for this artwork) instead of a full-bleed banner across a 390px screen.
-   Scoped to the same 1023px breakpoint as the menu button, so the desktop bar is untouched. */
-@media (max-width: 1023px) {
-    nav.navbar.validnavs .navbar-header {
-        justify-content: flex-start !important;
-        gap: 10px;
-    }
-
-    nav.navbar.validnavs .navbar-brand {
-        flex: 0 0 auto !important;
-        min-width: 0 !important;
-        width: auto !important;
-        margin: 0 !important;
-    }
-
-    nav.navbar.validnavs .navbar-brand img {
-        max-height: 40px;
-        width: auto;
-        max-width: 100%;
-        margin: 0 !important;
     }
 }

@@ -32,7 +32,7 @@
     <link href="{{ asset ('frontend/assets/css/helper.css')}}" rel="stylesheet">
     <link href="{{ asset ('frontend/assets/css/unit-test.css')}}" rel="stylesheet">
     <link href="{{ asset ('frontend/assets/css/style.css')}}" rel="stylesheet">
-    <link href="{{ asset('frontend/assets/css/brand.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/brand.css?v=20261108b') }}" rel="stylesheet">
     {{-- <link href="{{ asset ('frontend/assets/style.css')}}" rel="stylesheet"> --}}
     <!-- ========== End Stylesheet ========== -->
 
