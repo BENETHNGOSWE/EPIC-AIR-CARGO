@@ -175,7 +175,7 @@
         transform: none !important;
         float: none !important;
         margin: 0 !important;
-        padding: 11px 16px 11px 10px !important;   /* top right bottom left: logo inset 13px, button stays 16px */
+        padding: 11px 16px 11px 10px !important;   /* top right bottom left: logo 10px off the edge, button 16px off the other */
         gap: 12px;
         /* the logo's 10px off the left edge; the button keeps 16px on the right */
         padding-left: 10px !important;
