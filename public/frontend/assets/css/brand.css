@@ -172,7 +172,7 @@
         transform: none !important;
         float: none !important;
         margin: 0 !important;
-        padding: 11px 16px !important;
+        padding: 11px 16px 11px 13px !important;   /* top right bottom left: logo inset 13px, button stays 16px */
         gap: 12px;
     }
 
