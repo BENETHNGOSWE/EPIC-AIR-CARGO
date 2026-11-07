@@ -175,10 +175,11 @@
         transform: none !important;
         float: none !important;
         margin: 0 !important;
-        padding: 11px 16px 11px 10px !important;   /* top right bottom left: logo 10px off the edge, button 16px off the other */
+        padding: 9px 16px 9px 8px !important;   /* top right bottom left: 8px for the logo, 16px kept for the button.
+           9 + 48 + 9 = the 66px row, so the mark fills the band instead of floating in it */
         gap: 12px;
-        /* the logo's 10px off the left edge; the button keeps 16px on the right */
-        padding-left: 10px !important;
+        /* the logo's 8px off the left edge; the button keeps 16px on the right */
+        padding-left: 8px !important;
         padding-right: 16px !important;
     }
 
@@ -203,7 +204,7 @@
     }
 
     nav.navbar.validnavs .navbar-brand img {
-        max-height: 38px !important;
+        max-height: 48px !important;
         height: auto !important;
         width: auto !important;
         max-width: 100% !important;
