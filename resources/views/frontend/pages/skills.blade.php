@@ -1,6 +1,6 @@
 <div class="skills-style-one-area overflow-hidden">
         <div class="skill-thumb">
-            <img src="frontend/assets/img/epic/team-skills.jpg" alt="Epic Air Cargo">
+            <img src="frontend/assets/img/epic/photo-desk.jpg?v=20261108a" alt="Epic Air Cargo office">
         </div>
         <div class="container">
             <div class="row">

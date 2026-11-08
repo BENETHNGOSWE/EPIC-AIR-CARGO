@@ -6,7 +6,7 @@
 
                 <!-- Single Item -->
                 <div class="swiper-slide">
-                    <div class="banner-thumb shadow-dark-left bg-cover" style="background-image: url(frontend/assets/img/epic/hero-team.jpg); background-size: cover; background-position: center 58%;"></div>
+                    <div class="banner-thumb shadow-dark-left bg-cover" style="background-image: url(frontend/assets/img/epic/photo-airside.jpg?v=20261108a); background-size: cover; background-position: center 58%;"></div>
                     <div class="item">
                         <div class="container">
                             <div class="content">
@@ -42,7 +42,7 @@
 
                 <!-- Single Item -->
                 <div class="swiper-slide">
-                    <div class="banner-thumb shadow-dark-left bg-cover" style="background-image: url(frontend/assets/img/epic/hero-team.jpg); background-size: cover; background-position: center 58%;"></div>
+                    <div class="banner-thumb shadow-dark-left bg-cover" style="background-image: url(frontend/assets/img/epic/photo-airside.jpg?v=20261108a); background-size: cover; background-position: center 58%;"></div>
                     <div class="item">
                         <div class="container">
                             <div class="content">

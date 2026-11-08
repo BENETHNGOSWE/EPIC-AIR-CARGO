@@ -33,7 +33,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="about-style-three-thumb wow fadeInUp" data-wow-delay="100ms">
-                        <img src="frontend/assets/img/epic/team-about.jpg" alt="Epic Air Cargo">
+                        <img src="frontend/assets/img/epic/photo-handover.jpg?v=20261108a" alt="Epic Air Cargo delivery">
                     </div>
                 </div>
                 <div class="col-lg-6 pl-60 pl-md-15 pl-xs-15">

@@ -17,7 +17,7 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Epic Air Cargo">
     <meta property="og:description" content="Cargo clearing and transportation in Dar es Salaam.">
-    <meta property="og:image" content="{{ asset('frontend/assets/img/epic/og-team.jpg') }}">
+    <meta property="og:image" content="{{ asset('frontend/assets/img/epic/og-photo.jpg') }}">
     <link rel="apple-touch-icon" href="{{ asset('frontend/assets/img/favicon-epic-192.png') }}">
     <meta name="theme-color" content="#0b2545"><!-- TODO: your brand colour from the logo -->
 
@@ -32,7 +32,7 @@
     <link href="{{ asset ('frontend/assets/css/helper.css')}}" rel="stylesheet">
     <link href="{{ asset ('frontend/assets/css/unit-test.css')}}" rel="stylesheet">
     <link href="{{ asset ('frontend/assets/css/style.css')}}" rel="stylesheet">
-    <link href="{{ asset('frontend/assets/css/brand.css?v=20261108j') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/brand.css?v=20261108k') }}" rel="stylesheet">
     {{-- <link href="{{ asset ('frontend/assets/style.css')}}" rel="stylesheet"> --}}
     <!-- ========== End Stylesheet ========== -->
 
