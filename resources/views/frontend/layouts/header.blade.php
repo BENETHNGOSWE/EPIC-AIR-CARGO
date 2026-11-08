@@ -1,21 +1,36 @@
  <!-- Start Header Top 
     ============================================= -->
-    <div class="top-bar-area bg-theme text-light">
+    @php
+        /* The desk's own line goes here, e.g. '+255 6XX XXX XXX'. While it is empty the phone
+           item is not rendered at all: the number in the reference screenshot belongs to the
+           sea-freight site, and the two companies must not share contact details. */
+        $deskPhone = '';
+        $deskPhoneHref = $deskPhone !== '' ? 'tel:+' . preg_replace('/\D+/', '', $deskPhone) : '';
+    @endphp
+    <div class="top-bar-area top-bar-light">
         <div class="container">
-            <div class="row align-center">
-                <div class="col-xl-9 col-lg-9 info">
+            <div class="row align-items-center">
+                <div class="col-lg-8 info">
                     <div class="address-info">
                         <ul class="item-flex">
+                            @if($deskPhone !== '')
                             <li>
-                                <i class="fas fa-envelope-open-text"></i> info@epicaircargo.com
+                                <a href="{{ $deskPhoneHref }}"><i class="fas fa-phone-alt" aria-hidden="true"></i> {{ $deskPhone }}</a>
                             </li>
-</ul>
+                            @endif
+                            <li>
+                                <a href="mailto:info@epicaircargo.com"><i class="fas fa-envelope-open-text" aria-hidden="true"></i> info@epicaircargo.com</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 text-end">
-                    <div class="social">
-                        <span class="text-light">Air freight and customs clearing, Dar es Salaam</span>
-                    </div>
+                <div class="col-lg-4 top-bar-social">
+                    <ul class="social">
+                        <li><a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                        <li><a href="https://twitter.com/" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.instagram.com/accounts/login/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+                    </ul>
                 </div>
             </div>
         </div>

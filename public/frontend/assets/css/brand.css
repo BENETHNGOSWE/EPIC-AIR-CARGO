@@ -124,7 +124,7 @@
 /* !important is deliberate: the vendor selector nav.navbar.validnavs .navbar-toggle i has
    specificity (0,3,2), so a plain .fa rule cannot outvote it, as this build's own cascade
    check showed before the !important was added. */
-.fa, .fas, .far, i[class^="fa-"], i[class*=" fa-"] {
+.fa, .fas, .far, i[class^="fa-"], i[class*=" fa-"]:not(.fab):not([class*="fa-brands"]){
     font-family: "Font Awesome 5 Free" !important;
     font-weight: 900 !important;
 }
@@ -272,5 +272,109 @@
         background: #85080f;
         padding-left: 10px;
         padding-right: 10px;
+    }
+}
+
+
+/* ==============================================================
+   Top bar, white version of the sea site's strip: phone + email on the left,
+   social icons on the right. The theme's own .bg-theme background and the
+   .text-light colour are dropped from the markup, so nothing here is fighting
+   an !important - these are plain declarations on a class only this file uses.
+   ============================================================== */
+.top-bar-area.top-bar-light {
+    background: #ffffff;
+    border-bottom: 1px solid #e3e7ef;
+    padding: 9px 0;
+    font-size: 14px;
+    color: #0a2147;
+}
+
+.top-bar-area.top-bar-light .address-info ul.item-flex {
+    gap: 22px;
+}
+
+.top-bar-area.top-bar-light .address-info li {
+    color: #0a2147;
+    font-weight: 600;
+}
+
+.top-bar-area.top-bar-light .address-info a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #0a2147;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.top-bar-area.top-bar-light .address-info a i {
+    color: #85080f;
+    font-size: 15px;
+}
+
+.top-bar-area.top-bar-light .address-info a:hover,
+.top-bar-area.top-bar-light .address-info a:focus {
+    color: #85080f;
+    text-decoration: underline;
+}
+
+.top-bar-area.top-bar-light ul.social {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.top-bar-area.top-bar-light ul.social li a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    line-height: 1;
+    border: 1px solid #d8dde8;
+    border-radius: 6px;
+    background: transparent;
+    color: #0a2147;
+    font-size: 13px;
+}
+
+.top-bar-area.top-bar-light ul.social li a:hover,
+.top-bar-area.top-bar-light ul.social li a:focus {
+    background: #85080f;
+    border-color: #85080f;
+    color: #ffffff;
+}
+
+@media (max-width: 1023px) {
+    /* The theme hides the whole bar below its own breakpoint; the phone number is the
+       one thing worth keeping on a handset, so it comes back as a single tight line
+       and the social icons drop out to leave the two contacts room. */
+    .top-bar-area.top-bar-light {
+        display: block !important;
+        padding: 6px 0;
+        font-size: 12.5px;
+    }
+
+    .top-bar-area.top-bar-light > .container > .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        gap: 10px;
+        margin: 0;
+    }
+
+    .top-bar-area.top-bar-light .address-info ul.item-flex {
+        display: flex !important;
+        flex-wrap: nowrap;
+        gap: 14px;
+    }
+
+    .top-bar-area.top-bar-light ul.social {
+        display: none !important;
     }
 }
