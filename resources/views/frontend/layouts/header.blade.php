@@ -1,7 +1,7 @@
  <!-- Start Header Top 
     ============================================= -->
     @php
-        /* The desk's own line goes here, e.g. '+255 6XX XXX XXX'. While it is empty the phone
+        /* The desk's own line goes here, e.g. '+255 7XX XXX XXX' (digits deliberately masked: no real number belongs in a comment). While it is empty the phone
            item is not rendered at all: the number in the reference screenshot belongs to the
            sea-freight site, and the two companies must not share contact details. */
         $deskPhone = '';
