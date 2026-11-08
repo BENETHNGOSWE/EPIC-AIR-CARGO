@@ -167,7 +167,7 @@
         box-sizing: border-box !important;
         width: 100% !important;
         max-width: 100% !important;
-        min-height: 66px;
+        min-height: 62px;   /* was 66: the band came down 4px with the mark, so no empty space reappears */
         position: static !important;
         left: auto !important;
         right: auto !important;
@@ -175,8 +175,8 @@
         transform: none !important;
         float: none !important;
         margin: 0 !important;
-        padding: 9px 16px 9px 8px !important;   /* top right bottom left: 8px for the logo, 16px kept for the button.
-           9 + 48 + 9 = the 66px row, so the mark fills the band instead of floating in it */
+        padding: 8px 16px 8px 8px !important;   /* top right bottom left: 8px for the logo, 16px kept for the button.
+           8 + 40 + 8 = 56, so min-height 62 governs: the 46px red box needs 8 + 46 + 8 */
         gap: 12px;
         /* the logo's 8px off the left edge; the button keeps 16px on the right */
         padding-left: 8px !important;
@@ -204,14 +204,16 @@
     }
 
     nav.navbar.validnavs .navbar-brand img {
-        max-height: 48px !important;
+        max-height: 40px !important;   /* was 48px: the mark 17% smaller, size only */
         height: auto !important;
         width: auto !important;
         max-width: 100% !important;
         margin: 0 !important;
-        /* and pulled 20px left so the word 'Express', not the swoosh tail, lines up with the
-           content below the fold; the tail is then clipped by the screen edge instead of by me */
-        margin-left: -20px !important;
+        /* and pulled 17px left so the word 'Express', not the swoosh tail, lines up with the content
+           below the fold. Scaled with the size, not left at -20: the artwork puts ~17.1px of its own
+           canvas in front of the E at 40px tall (it was 20.5px at 48px), so the word keeps starting
+           ~8px from the screen edge either way */
+        margin-left: -17px !important;
     }
 
     nav.navbar.validnavs .navbar-toggle {
