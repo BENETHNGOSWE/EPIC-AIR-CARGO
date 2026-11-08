@@ -380,3 +380,21 @@
         display: none !important;
     }
 }
+
+/* ==============================================================
+   Desktop brand mark, same size as the phone's.
+   The theme has exactly one rule sizing it - .navbar-brand > img { height: 90px } - with no media
+   query and no .sticked variant, and on its own it stretches the bar to 90 + 20 = 110px tall. The
+   mark is 40px below 1024px, so one logo was rendering at two very different sizes. Pinned to the
+   same 40px here; width stays auto so the ~149px follows from the artwork's own 3.72 aspect ratio
+   instead of a second number that could drift out of step with the file. Specificity is not the
+   argument - the theme's rule carries no !important, so this later sheet simply wins.
+   ============================================================== */
+@media (min-width: 1024px) {
+    nav.navbar.validnavs .navbar-brand img {
+        height: 40px !important;
+        max-height: 40px !important;
+        width: auto !important;
+    }
+}
+
